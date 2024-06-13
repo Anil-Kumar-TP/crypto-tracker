@@ -23,6 +23,6 @@ function MainComponent() {
           </div>
     </div>
   )
-}
+};
 
 export default MainComponent;
