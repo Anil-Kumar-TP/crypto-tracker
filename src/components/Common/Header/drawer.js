@@ -6,8 +6,6 @@ import { IconButton } from '@mui/material';
 
 export default function AnchorTemporaryDrawer() {
     const [open, setOpen] = useState(false);
- 
- 
 
   return (
     <div>
