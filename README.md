@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Crypto Tracker
 
 created using create-react-app
+
+## Custom scrollbar from w3 schools.
 
 ## Available Scripts
 
