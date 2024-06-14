@@ -5,7 +5,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { ThemeProvider, createTheme } from '@mui/material';
 
-export default function TabsComponent() {
+export default function TabsComponent ({ coins }) {
   const [value, setValue] = useState('grid');
 
   const handleChange = (event, newValue) => {
@@ -35,8 +35,25 @@ export default function TabsComponent() {
             <Tab label="Grid" value="grid" sx={style}/>
             <Tab label="List" value="list" sx={style}/>
           </TabList>
-        <TabPanel value="grid">mapping for grids</TabPanel>
-        <TabPanel value="list">mapping for lists</TabPanel>
+        <TabPanel value="grid">
+          <div>
+            {coins.map((item, i) => {
+            return (
+              <div key={i}>
+                <img src={item.image} alt="" />
+                <p>{i + 1}.{item.name}</p>
+              </div>
+              )
+            })}
+          </div>
+        </TabPanel>
+        <TabPanel value="list">
+          <div>
+            {coins.map((item, i) => {
+              return <p key={i}>{i + 1}.{item.id}</p>
+            })}
+          </div>
+        </TabPanel>
       </TabContext>
     </ThemeProvider>
   );
