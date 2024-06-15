@@ -67,6 +67,7 @@
     color: var(--green);
     font-size: 1.1rem;
     cursor: pointer;
+    min-width: 64px;
 }
 
 .price-chip:hover,
@@ -79,8 +80,8 @@
 .icon-chip{
     border: 2px solid var(--green);
     border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
+    height: 2rem !important;
+    width: 2rem !important;
     display: flex;
     justify-content: center;
     align-items: center;
