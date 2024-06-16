@@ -4,7 +4,6 @@ import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 
 function Grid ({ coin }) {
-    console.log(coin);
     return (
         <div className={`grid-container ${coin.price_change_percentage_24h < 0 && 'grid-container-red'}`}>
             <div className="info-flex">
