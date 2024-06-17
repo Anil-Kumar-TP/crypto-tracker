@@ -5,6 +5,7 @@ import { coinObject } from '../functions/convertObject';
 import Header from '../components/Common/Header';
 import Loader from '../components/Common/Loader';
 import List from '../components/Dashboard/List';
+import CoinInfo from '../components/Coin/CoinInfo';
 
 function CoinPage () {
     const { id } = useParams();
@@ -17,7 +18,7 @@ function CoinPage () {
                 .then((response) => {
                     console.log("Response", response);
                     coinObject(setCoinData, response.data);
-                     setIsLoading(false);
+                    setIsLoading(false);
                 })
                 .catch((error) => {
                     console.log("Error", error);
@@ -26,18 +27,19 @@ function CoinPage () {
         }
 
         }, [id]);
-  return (
-      <div>
-          <Header />
-          {isLoading ? <Loader /> : 
-              <>
-                <div className='grey-wrapper'>
-                    <List coin={coinData}/>
-                </div>
-              </>
-          }
-    </div>
-  )
-}
+    return (
+        <div>
+            <Header />
+            {isLoading ? <Loader /> :
+                <>
+                    <div className='grey-wrapper'>
+                        <List coin={coinData} />
+                    </div>
+                    <CoinInfo heading={coinData.name} desc={coinData.desc} />
+                </>
+            }
+        </div>
+    );
+};
 
 export default CoinPage;
