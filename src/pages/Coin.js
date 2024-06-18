@@ -9,6 +9,8 @@ import { getCoinData } from '../functions/getCoinData';
 import { getCoinPrices } from '../functions/getCoinPrices';
 import LineChart from '../components/Coin/LineChart';
 import { convertDate } from '../functions/convertDate';
+import SelectDays from '../components/Coin/SelectDays';
+import { settingChartData } from '../functions/settingChartData';
 
 function CoinPage () {
     const { id } = useParams();
@@ -21,7 +23,6 @@ function CoinPage () {
         if (id) {
             getData();
         }
-
     }, [id]);
         
     async function getData () {
@@ -48,21 +49,34 @@ function CoinPage () {
             }
         }
     }
+
+    //we need to fetch the prices again once we change the days.
+    const handleDaysChange = async (event) => {
+        setIsLoading(true);
+        setDays(event.target.value);
+          const prices = await getCoinPrices(id, event.target.value);
+            if (prices.length > 0) {
+                settingChartData(setChartData, prices);
+                setIsLoading(false);
+            }
+  };
     
     return (
         <div>
             <Header />
             {isLoading ? <Loader /> :
                 <>
-                    <div className='grey-wrapper'>
+                    <div className='grey-wrapper' style={{padding:'0rem 1rem'}}>
                         <List coin={coinData} />
                     </div>
                     <div className="grey-wrapper">
+                        <SelectDays days={days} handleDaysChange={handleDaysChange}/>
                         <LineChart chartData={chartData}/>
                     </div>
                     <CoinInfo heading={coinData.name} desc={coinData.desc} />
                 </>
             }
+
         </div>
     );
 };
