@@ -8,4 +8,7 @@
     color: var(--blue);
     position: absolute;
     z-index: 1000;
+    position: fixed;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }

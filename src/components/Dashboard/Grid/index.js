@@ -2,9 +2,11 @@ import React from 'react'
 import './styles.css';
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
+import { Link } from 'react-router-dom';
 
 function Grid ({ coin }) {
     return (
+        <Link to={`/coin/${coin.id}`}>
         <div className={`grid-container ${coin.price_change_percentage_24h < 0 && 'grid-container-red'}`}>
             <div className="info-flex">
                 <img src={coin.image} alt="" className='coin-logo' />
@@ -28,7 +30,8 @@ function Grid ({ coin }) {
                 <p className='total_volume'>Total Volume : {coin.total_volume.toLocaleString()}</p>
                 <p className='total_volume'>Market Cap : ${coin.market_cap.toLocaleString()}</p>
             </div>
-        </div>
+            </div>
+         </Link>
     );
 };
 
